@@ -5,10 +5,8 @@
   const cors = require('cors');
   const cookieParser = require('cookie-parser');
   const queryString = require('querystring');
-  // const axios = require('axios');
   let accessToken, refreshToken;
   const request = require('request');
-  // import {getTokenFromCode, getTokenFromRefresh} from './utils/grabAccessToken';
   let tokenGen = require('./views/utils/grabAccessToken');
   let userData = require('./views/utils/grabUsersData');
   let userInfo, artistInfo, trackInfo, updatedInfo;
@@ -18,7 +16,6 @@
 
   //enter your spotify developer details here
   let client_id = process.env.client_id;
-  let client_secret = process.env.client_secret;
   let redirect_uri = process.env.redirect_uri;
 
 
@@ -43,19 +40,13 @@
 
   router.get('/', (req, res) => {
     console.log(path);
-    // res.sendFile(path.join(__dirname+'/public/index.html'));
     res.render('index');
   })
 
-  // router.get('/dashboard', (req, res) => {
-  //   res.render('./logged_in.ejs', req.body.data);
-  // })
 
    router.get('/test', (req, res) => {
     res.send('test site');
   })
-
-  // router.get('/refresh', )
 
 
   router.get('/login', (req, res) => {
@@ -71,7 +62,6 @@
       redirect_uri: redirect_uri,
       state: state
     }));
-    //send the req. data to the spotify accounts server
   })
 
   router.get('/callback', (req, resp) => {
@@ -120,50 +110,6 @@
     }
   })
 
-  // router.get('/getArtists', function(req, response) {
-  //   console.log(accessToken);
-  //   userData.getArtists(accessToken).then((res) => {
-  //     let artist_names = {};
-  //     let i = 0;
-  //     res.items.forEach(item => {
-  //       if(i <= 9) {
-  //         i += 1;
-  //         artist_names[`artist_${i}`] = item.name;
-  //       }
-  //     })
-  //     artistInfo = artist_names;
-  //     artist_names['recommendationInfo'] = false;
-  //     artist_names['trackInfo'] = false;
-  //     artist_names['artistInfo'] = true;
-  //     artist_names['userInfo'] = true;
-  //     updatedInfo = {...userInfo,...artist_names};
-  //     response.render('./logged_in.ejs', updatedInfo);
-  //   }).catch(err => console.log('errrrrr: ', err));
-  // })
-
-  // router.get('/getTracks', (req, response) => {
-  //   console.log(accessToken);
-  //   userData.getTracks(accessToken).then((res) => {
-  //     let track_names = {};
-  //     let i = 0;
-  //     res.items.forEach(item => {
-  //       if(i <= 9) {
-  //         trackIds[i] = item.id;
-  //         i += 1;
-  //         track_names[`track_${i}`] = item.name;
-  //       }
-  //     })
-  //     console.log('track info: ', res);
-  //     trackInfo = track_names;
-  //     // track_names['artistInfo'] = true;
-  //     // track_names['userInfo'] = true;
-  //     track_names['recommendationInfo'] = false;
-  //     track_names['trackInfo'] = true;
-  //     updatedInfo = {...updatedInfo,...track_names};
-  //     response.render('./logged_in.ejs', updatedInfo);
-  //   }).catch(err => console.log('errrrrr: ', err));
-  // })
-
   router.get('/getRecommendations', (req, response) => {
     let seed = [trackIds[0], trackIds[1], trackIds[2], trackIds[3], trackIds[4]];
     seed = seed.join(',')
@@ -176,38 +122,12 @@
           recommendations[`rec_${i}`] = item.name;
         }
       })
-      // track_names['artistInfo'] = true;
-      // track_names['userInfo'] = true;
       recommendations['recommendationInfo'] = true;
       updatedInfo = {...updatedInfo,...recommendations};
       response.render('./logged_in.ejs', updatedInfo);
     });
     
   }) 
-
-  //replace this with the helper function
-  router.get('/refresh_token', function(req, res) {
-
-    // requesting access token from refresh token
-    let refresh_token = refreshToken;
-    var authOptions = {
-      url: 'https://accounts.spotify.com/api/token',
-      headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
-      form: {
-        grant_type: 'refresh_token',
-        refresh_token: refresh_token
-      },
-      json: true
-    };
-    request.post(authOptions, function(error, response, body) {
-      if (!error && response.statusCode === 200) {
-        var access_token = body.access_token;
-        res.send({
-          'access_token': access_token
-        });
-      }
-    });
-  });
 
 
   app.use('/', router);
