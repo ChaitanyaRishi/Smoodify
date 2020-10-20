@@ -1,0 +1,48 @@
+html,body {
+    background-color: #121212;
+}
+
+
+.media-object {
+    border: 3px solid #BB86FC;
+    margin-left: 20px;
+}
+
+ul {
+    padding: 20px;
+}
+
+li {
+    color: #BB86FC;
+}
+
+dt {
+    color: #BB86FC;
+}
+a, dd{
+    color:#FFFFFF;
+}
+
+a {
+    border-bottom: 1px solid  #BB86FC;
+}
+
+span {
+    border-bottom:  solid #BB86FC;
+    color:#FFFFFF;
+}
+
+.btn {
+    background-color: #03DAC5;
+    color: black;
+}
+
+a:hover {
+    background-color: #FFFFFF;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid #BB86FC ;
+}

@@ -1,0 +1,16 @@
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: rgba(216, 241, 238, 0.945);
+    background-image: url("https://wallpaperaccess.com/full/667771.jpg");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+}
+
+#login {
+    margin-left: 45%;
+    margin-top: 10%;
+}

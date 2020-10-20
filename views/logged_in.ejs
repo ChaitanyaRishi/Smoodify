@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/logged_in.css">
+    <title>DashBoard</title>
+
+</head>
+
+<body>
+    <h1>Welcome to your dashboard!</h1>
+    <div class="media-body">
+        <div class="pull-left">
+            <img class="media-object" width="150" src="<%=images[0].url%>" />
+        </div>
+        <div class="media-body">
+            <dl class="dl-horizontal">
+                <dt>Name:</dt>
+                <dd class="clearfix"><%=display_name%></dd>
+                <dt>Id:</dt>
+                <dd><%=id%></dd>
+                <dt>Email:</dt>
+                <dd><%=email%></dd>
+                <dt>Spotify URI:</dt>
+                <dd><a href="<%=external_urls.spotify%>"><%=external_urls.spotify%></a></dd>
+                <dt>Link:</dt>
+                <dd><a href="<%=href%>"><%=href%></a></dd>
+                <dt>Profile Image:</dt>
+                <dd class="clearfix"><a href="<%=images[0].url%>"><%=images[0].url%></a></dd>
+                <dt>Country:</dt>
+                <dd><%=country%></dd>
+                <dt id="access_token">Access Token:</dt>
+                <dd><%=access_token%></dd>
+                <dt id="refresh_token">Refresh Token:</dt>
+                <dd><%=refresh_token%></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 100%;">
+        <div>
+            <!-- <a style="align-items: center;" href="/refresh_token" class="btn btn-primary"> grab a new access token! </a> -->
+            <span>Your Top Artists: </span>
+            <ul>
+                <li>Artist1: <%=artist_1%></li>
+                <li>Artist2: <%=artist_2%></li>
+                <li>Artist3: <%=artist_3%></li>
+                <li>Artist4: <%=artist_4%></li>
+                <li>Artist5: <%=artist_5%></li>
+                <li>Artist6: <%=artist_6%></li>
+                <li>Artist7: <%=artist_7%></li>
+                <li>Artist8: <%=artist_8%></li>
+                <li>Artist9: <%=artist_9%></li>
+                <li>Artist10: <%=artist_10%></li>
+            </ul>
+
+        </div>
+        <div>
+            <!-- <a style="align-items: center;" href="/refresh_token" class="btn btn-primary"> grab a new access token! </a> -->
+
+            <span>Your Top Tracks: </span>
+            <ul>
+                <li>Track1: <%=track_1%></li>
+                <li>Track2: <%=track_2%></li>
+                <li>Track3: <%=track_3%></li>
+                <li>Track4: <%=track_4%></li>
+                <li>Track5: <%=track_5%></li>
+                <li>Track6: <%=track_6%></li>
+                <li>Track7: <%=track_7%></li>
+                <li>Track8: <%=track_8%></li>
+                <li>Track9: <%=track_9%></li>
+                <li>Track10: <%=track_10%></li>
+            </ul>
+
+        </div>
+        <div>
+            <a style="align-items: center;" href="/getRecommendations" class="btn btn-primary"> Suggest me songs! </a>
+            <% if (recommendationInfo) { %>
+            <ul>
+                <li>Recommendation1: <%=rec_1%></li>
+                <li>Recommendation2: <%=rec_2%></li>
+                <li>Recommendation3: <%=rec_3%></li>
+                <li>Recommendation4: <%=rec_4%></li>
+                <li>Recommendation5: <%=rec_5%></li>
+                <li>Recommendation6: <%=rec_6%></li>
+                <li>Recommendation7: <%=rec_7%></li>
+                <li>Recommendation8: <%=rec_8%></li>
+                <li>Recommendation9: <%=rec_9%></li>
+                <li>Recommendation10: <%=rec_10%></li>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+    <script type="module" src="/js/logged_in.js"></script>
+</body>
+
+</html>
