@@ -1,5 +1,5 @@
 # Smoodify
-Smoodify recommends you the songs you might like, and also creates playlists based on your current mood.
+Smoodify uses spotify personalization algorithm to recommend you the songs you might like, and also allows you to create playlists based on your current mood.
 
 
 To Use: </br>
