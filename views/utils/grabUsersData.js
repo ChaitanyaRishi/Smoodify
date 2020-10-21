@@ -47,6 +47,7 @@ let getRecommendations = (access_token, seed) => {
     //     seed_genres: "classical,country"
     // };
     return axios.get(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}`, options).then(res => {
+        console.log(res.data);
         return res.data;
     }).catch(err => console.log("err: ", err)); 
 }

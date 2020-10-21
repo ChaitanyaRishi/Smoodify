@@ -46,3 +46,13 @@ h1 {
     color: white;
     border-bottom: 3px solid #BB86FC ;
 }
+
+
+.hidden {
+    display: none;   
+}
+
+#pause, #resume {
+    background-color: #BB86FC;
+    color: white;
+}

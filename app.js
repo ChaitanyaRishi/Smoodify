@@ -51,7 +51,7 @@
 
   router.get('/login', (req, res) => {
     let state = generateRandomString(16);
-    let scope = 'user-read-private user-read-email user-top-read';
+    let scope = 'streaming, user-read-private user-read-email user-top-read';
     
     res.cookie(stateKey, state);
 
@@ -120,6 +120,7 @@
         if(i <= 9) {
           i += 1;
           recommendations[`rec_${i}`] = item.name;
+          recommendations[`uri_${i}`] = item.uri;
         }
       })
       recommendations['recommendationInfo'] = true;
