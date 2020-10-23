@@ -130,8 +130,10 @@
     
   }) 
 
+  const host = '0.0.0.0';
+  const port = process.env.PORT || 8888;
 
   app.use('/', router);
-  app.listen(process.env.port || 8888);
-
-  console.log('running at port 8888');
+  app.listen(port, host, function () {
+    console.log('server has started');
+  });
