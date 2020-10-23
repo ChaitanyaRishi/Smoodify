@@ -5,12 +5,27 @@ html,body {
 
 body {
     background-color: rgba(216, 241, 238, 0.945);
-    background-image: url("https://wallpaperaccess.com/full/667771.jpg");
+    background-image: url("/images/bg-1.png");
     background-repeat: no-repeat;
     background-color: #cccccc;
+    background-size: cover;
 }
 
 #login {
     margin-left: 45%;
     margin-top: 10%;
+}
+
+.spotify_style {
+    font-family: Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 800;
+    height: 40px;
+    background-color: #fff;
+    padding: 10px 15px 10px 10px;
+    border-radius: 20px;
+    color: #191919;
+    font-size: 13px;
+    text-decoration: none;
+    transition: box-shadow .3s;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
 }

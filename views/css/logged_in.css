@@ -28,7 +28,7 @@ a {
 }
 
 span {
-    border-bottom:  solid #BB86FC;
+    border-bottom: 2px solid #BB86FC;
     color:#FFFFFF;
 }
 
@@ -44,7 +44,7 @@ a:hover {
 h1 {
     text-align: center;
     color: white;
-    border-bottom: 3px solid #BB86FC ;
+    border-bottom: 4px solid #BB86FC ;
 }
 
 
