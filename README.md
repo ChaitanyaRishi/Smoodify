@@ -7,3 +7,5 @@ To Use: </br>
 -> Create your auth code by converting *cliend_id*:*client_secret* to a base 64 format and save it in a variable called *auth_code*</br>
 -> store your *auth_code*, *client_id*, and *redirect_ui* in a .env file</br>
 -> Do *npm start* and your're good to go!</br>
+
+UPDATE: You can now try the app here: https://smooodify.herokuapp.com/getRecommendations 
