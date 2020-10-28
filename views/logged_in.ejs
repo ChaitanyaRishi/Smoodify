@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="/css/logged_in.css">
     <script src="https://kit.fontawesome.com/f85aa908bc.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <title>DashBoard</title>
 
 </head>
@@ -75,7 +78,16 @@
                 <li>Track9: <%=track_9%></li>
                 <li>Track10: <%=track_10%></li>
             </ul>
-
+            <span class="hidden" id="trackId1"> <%=trackId_1%> </span>
+            <span class="hidden" id="trackId2"> <%=trackId_2%> </span>
+            <span class="hidden" id="trackId3"> <%=trackId_3%> </span>
+            <span class="hidden" id="trackId4"> <%=trackId_4%> </span>
+            <span class="hidden" id="trackId5"> <%=trackId_5%> </span>
+            <span class="hidden" id="trackId6"> <%=trackId_6%> </span>
+            <span class="hidden" id="trackId7"> <%=trackId_7%> </span>
+            <span class="hidden" id="trackId8"> <%=trackId_8%> </span>
+            <span class="hidden" id="trackId9"> <%=trackId_9%> </span>
+            <span class="hidden" id="trackId10"> <%=trackId_10%> </span>
         </div>
         <div>
             <a style="align-items: center;" href="/getRecommendations" class="btn btn-primary"> Suggest me songs! </a>
@@ -84,146 +96,105 @@
             <ul>
                 <li>Recommendation1: <%=rec_1%> <i id="play1" class="fas fa-play"></i> </li>
                 </br>
-                <span class="hidden" id="val1"> <%=uri_1%> </span>
+
 
                 <li>Recommendation2: <%=rec_2%> <i id="play2" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val2"> <%=uri_2%> </span>
+
                 </br>
                 <li>Recommendation3: <%=rec_3%> <i id="play3" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val3"> <%=uri_3%> </span>
+
                 </br>
                 <li>Recommendation4: <%=rec_4%> <i id="play4" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val4"> <%=uri_4%> </span>
+
                 </br>
                 <li>Recommendation5: <%=rec_5%> <i id="play5" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val5"> <%=uri_5%> </span>
+
                 </br>
                 <li>Recommendation6: <%=rec_6%> <i id="play6" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val6"> <%=uri_6%> </span>
+
                 </br>
                 <li>Recommendation7: <%=rec_7%> <i id="play7" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val7"> <%=uri_7%> </span>
+
                 </br>
                 <li>Recommendation8: <%=rec_8%> <i id="play8" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val8"> <%=uri_8%> </span>
+
                 </br>
                 <li>Recommendation9: <%=rec_9%> <i id="play9" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val9"> <%=uri_9%> </span>
+
                 </br>
                 <li>Recommendation10: <%=rec_10%> <i id="play10" class="fas fa-play"></i> </li>
-                <span class="hidden" id="val10"> <%=uri_10%> </span>
+
                 </br>
             </ul>
+            <span class="hidden" id="val1"> <%=uri_1%> </span>
+            <span class="hidden" id="val2"> <%=uri_2%> </span>
+            <span class="hidden" id="val3"> <%=uri_3%> </span>
+            <span class="hidden" id="val4"> <%=uri_4%> </span>
+            <span class="hidden" id="val5"> <%=uri_5%> </span>
+            <span class="hidden" id="val6"> <%=uri_6%> </span>
+            <span class="hidden" id="val7"> <%=uri_7%> </span>
+            <span class="hidden" id="val8"> <%=uri_8%> </span>
+            <span class="hidden" id="val9"> <%=uri_9%> </span>
+            <span class="hidden" id="val10"> <%=uri_10%> </span>
             <% } %>
         </div>
     </div>
-    <script type="module" src="/js/logged_in.js"></script>
+    <hr style="border: 2px solid #BB86FC;">
+    <div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 100%; margin-left: 45%;">
+        <!-- we need a drop down here that asks to select current mood -->
+        <div>
+            <p id="selectMood">Select Your Mood Below: </p>
+            <select class="browser-default custom-select custom-select-lg mb-3" name="moodSelector" id="moodSelector">
+                <option value="Select" disabled selected>Select Your Mood</option>
+                <option value="happy">happy</option>
+                <option value="sad">sad</option>
+                <option value="party">party</option>
+                <option value="chill">chill</option>
+                <option value="frustrated">frustrated</option>
+                <option value="random">random</option>
+            </select>
+        </div>
+        <div id="display_mood_results">
+
+        </div>
+    </div>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="module" src="/js/spotify_playback.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="/js/helper.js"></script>
     <script>
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = document.getElementById('access_token').innerText;
-            // console.log(token);
-            // const uri = document.getElementById('val1').innerText;
-            let deviceId = null;
-            const player = new Spotify.Player({
-                name: 'Web Playback SDK Quick Start Player',
-                getOAuthToken: cb => {
-                    cb(token);
-                }
-            });
-
-            // Error handling
-            player.addListener('initialization_error', ({
-                message
-            }) => {
-                console.error(message);
-            });
-            player.addListener('authentication_error', ({
-                message
-            }) => {
-                console.error(message);
-            });
-            player.addListener('account_error', ({
-                message
-            }) => {
-                console.error(message);
-            });
-            player.addListener('playback_error', ({
-                message
-            }) => {
-                console.error(message);
-            });
-
-            // Playback status updates
-            player.addListener('player_state_changed', state => {
-                console.log(state);
-            });
-
-            // Ready
-            player.addListener('ready', ({
-                device_id
-            }) => {
-                deviceId = device_id;
-                console.log('Ready with Device ID', device_id);
-            });
-
-            // Not Ready
-            player.addListener('not_ready', ({
-                device_id
-            }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
-
-            player.connect().then(() => {
-                console.log('connected....');
-            });
-            const play = ({
-                spotify_uri,
-                playerInstance: {
-                    _options: {
-                        getOAuthToken,
-                        id
-                    }
-                }
-            }) => {
-                getOAuthToken(access_token => {
-                    fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
-                        method: 'PUT',
-                        body: JSON.stringify({
-                            uris: [spotify_uri.trim()]
-                        }),
+        let track1 = document.getElementById('trackId5').innerText.trim();
+        let track2 = document.getElementById('trackId6').innerText.trim();
+        let track3 = document.getElementById('trackId7').innerText.trim();
+        let track4 = document.getElementById('trackId8').innerText.trim();
+        let track5 = document.getElementById('trackId9').innerText.trim();
+        let seed = [track1, track2, track3, track4, track5];
+        seed = seed.join(',');
+        document.getElementById("moodSelector").addEventListener('change', function () {
+            const access_token = document.getElementById('access_token').innerText;
+            let mood = document.getElementById('moodSelector').value;
+            switch (mood) {
+                case "happy":
+                    fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}&target_valence=0.7`, {
+                        method: 'GET',
                         headers: {
-                            'Content-Type': 'application/json',
                             'Authorization': `Bearer ${access_token}`
                         },
-                    }).then(response => {
-                        console.log(response)
-                    }).then(result => console.log(
-                        result)).catch(
-                        err => console.log('errror:', err));
-                });
-            };
-            for (let i = 1; i <= 10; i++) {
-                document.getElementById(`play${i}`).addEventListener('click', () => {
-                    const uri = document.getElementById(`val${i}`).innerText;
-                    console.log('uriiii: ', uri);
-                    play({
-                        playerInstance: player,
-                        spotify_uri: uri
-                    })
-                })
+                    }).then(resp => console.log("first: ", resp.text())).then(result => console.log(
+                        "result: ", result));
+                    break;
+                case "sad":
+                    fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}&target_valence=0.2`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${access_token}`
+                        },
+                    }).then(resp => console.log("first: ", resp.text())).then(result => console.log(
+                        "result: ", result));
+                    break;
             }
-            document.getElementById('pause').addEventListener('click', () => {
-                player.pause().then(() => {
-                    console.log('Paused!');
-                });
-            })
-            document.getElementById('resume').addEventListener('click', () => {
-                player.resume().then(() => {
-                    console.log('Resumed!');
-                });
-            })
-        };
+
+        })
     </script>
 </body>
 

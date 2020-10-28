@@ -56,3 +56,8 @@ h1 {
     background-color: #BB86FC;
     color: white;
 }
+
+#selectMood {
+    color: white;
+    /* border-top: 2px solid #BB86FC ; */
+}

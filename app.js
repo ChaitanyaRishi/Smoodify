@@ -9,7 +9,7 @@
   const request = require('request');
   let tokenGen = require('./views/utils/grabAccessToken');
   let userData = require('./views/utils/grabUsersData');
-  let userInfo, artistInfo, trackInfo, updatedInfo;
+  let updatedInfo;
   let trackIds = {};
 
   require('dotenv').config();
@@ -96,6 +96,7 @@
                   if(i <= 9) {
                     trackIds[i] = item.id;
                     i += 1;
+                    data[`trackId_${i}`] = item.id;
                     data[`track_${i}`] = item.name;
                   }
                 })
@@ -113,6 +114,7 @@
   router.get('/getRecommendations', (req, response) => {
     let seed = [trackIds[0], trackIds[1], trackIds[2], trackIds[3], trackIds[4]];
     seed = seed.join(',')
+    console.log(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}`);
     userData.getRecommendations(accessToken, seed).then(res => {
       let recommendations = {};
       let i = 0;
