@@ -8,4 +8,4 @@ To Use: </br>
 -> store your *auth_code*, *client_id*, and *redirect_ui* in a .env file</br>
 -> Do *npm start* and your're good to go!</br>
 
-UPDATE: You can now try the app here: https://smooodify.herokuapp.com/getRecommendations 
+UPDATE: You can now try the app here: https://smooodify.herokuapp.com/
