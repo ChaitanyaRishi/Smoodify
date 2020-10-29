@@ -41,14 +41,7 @@ let getRecommendations = (access_token, seed) => {
             'Authorization': 'Bearer ' + access_token,
         }
     }
-    // let data = {
-    //     seed_tracks: "0c6xIDDpzE81m2q797ordA",
-    //     seed_artists: "4NHQUGzhtTLFvgF5SZesLK",
-    //     seed_genres: "classical,country"
-    // };
     return axios.get(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}`, options).then(res => {
-        let url  = `https://api.spotify.com/v1/recommendations?seed_tracks=${seed}`
-        console.log(url);
         return res.data;
     }).catch(err => console.log("err: ", err)); 
 }

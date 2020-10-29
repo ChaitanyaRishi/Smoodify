@@ -8,8 +8,6 @@
 
     <link rel="stylesheet" href="/css/logged_in.css">
     <script src="https://kit.fontawesome.com/f85aa908bc.js" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
     <title>DashBoard</title>
 
 </head>
@@ -47,7 +45,7 @@
     <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 100%;">
         <div>
             <!-- <a style="align-items: center;" href="/refresh_token" class="btn btn-primary"> grab a new access token! </a> -->
-            <span>Your Top Artists: </span>
+            <span class="spanEle">Your Top Artists: </span>
             <ul>
                 <li>Artist1: <%=artist_1%></li>
                 <li>Artist2: <%=artist_2%></li>
@@ -65,7 +63,7 @@
         <div>
             <!-- <a style="align-items: center;" href="/refresh_token" class="btn btn-primary"> grab a new access token! </a> -->
 
-            <span>Your Top Tracks: </span>
+            <span class="spanEle">Your Top Tracks: </span>
             <ul>
                 <li>Track1: <%=track_1%></li>
                 <li>Track2: <%=track_2%></li>
@@ -92,8 +90,9 @@
         <div>
             <a style="align-items: center;" href="/getRecommendations" class="btn btn-primary"> Suggest me songs! </a>
             <% if (recommendationInfo) { %>
-            <button id="pause"> Pause </button> <button id="resume"> Resume </button>
-            <ul>
+            <button id="pause1"> Pause </button> <button id="resume1"> Resume </button>
+            <!-- gotta change all these names!!!! -->
+            <ul id="playButtons-1">
                 <li>Recommendation1: <%=rec_1%> <i id="play1" class="fas fa-play"></i> </li>
                 </br>
 
@@ -126,25 +125,30 @@
 
                 </br>
             </ul>
-            <span class="hidden" id="val1"> <%=uri_1%> </span>
-            <span class="hidden" id="val2"> <%=uri_2%> </span>
-            <span class="hidden" id="val3"> <%=uri_3%> </span>
-            <span class="hidden" id="val4"> <%=uri_4%> </span>
-            <span class="hidden" id="val5"> <%=uri_5%> </span>
-            <span class="hidden" id="val6"> <%=uri_6%> </span>
-            <span class="hidden" id="val7"> <%=uri_7%> </span>
-            <span class="hidden" id="val8"> <%=uri_8%> </span>
-            <span class="hidden" id="val9"> <%=uri_9%> </span>
-            <span class="hidden" id="val10"> <%=uri_10%> </span>
+            <div class="hidden" id="hidden-uris">
+                <span id="rec_val1"> <%=uri_1%> </span>
+                <span id="rec_val2"> <%=uri_2%> </span>
+                <span id="rec_val3"> <%=uri_3%> </span>
+                <span id="rec_val4"> <%=uri_4%> </span>
+                <span id="rec_val5"> <%=uri_5%> </span>
+                <span id="rec_val6"> <%=uri_6%> </span>
+                <span id="rec_val7"> <%=uri_7%> </span>
+                <span id="rec_val8"> <%=uri_8%> </span>
+                <span id="rec_val9"> <%=uri_9%> </span>
+                <span id="rec_val10"> <%=uri_10%> </span>
+            </div>
             <% } %>
+
+            <ul id="playButtons-2"></ul>
         </div>
     </div>
     <hr style="border: 2px solid #BB86FC;">
     <div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 100%; margin-left: 45%;">
         <!-- we need a drop down here that asks to select current mood -->
         <div>
+
             <p id="selectMood">Select Your Mood Below: </p>
-            <select class="browser-default custom-select custom-select-lg mb-3" name="moodSelector" id="moodSelector">
+            <select name="moodSelector" id="moodSelector">
                 <option value="Select" disabled selected>Select Your Mood</option>
                 <option value="happy">happy</option>
                 <option value="sad">sad</option>
@@ -153,49 +157,56 @@
                 <option value="frustrated">frustrated</option>
                 <option value="random">random</option>
             </select>
+            <button id="pause2"> Pause </button> <button id="resume2"> Resume </button>
         </div>
-        <div id="display_mood_results">
+        <ul class="hidden" id="display_mood_results">
+            <li><span id="mood_li1"> </span> <i id="mood_play1" class="fas fa-play"></i></li>
+            </br>
+            <li><span id="mood_li2"> </span> <i id="mood_play2" class="fas fa-play"></i></li>
 
+            </br>
+            <li><span id="mood_li3"> </span> <i id="mood_play3" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li4"> </span> <i id="mood_play4" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li5"> </span> <i id="mood_play5" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li6"> </span> <i id="mood_play6" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li7"> </span> <i id="mood_play7" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li8"> </span> <i id="mood_play8" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li9"> </span> <i id="mood_play9" class="fas fa-play"></i></li>
+
+            </br>
+            <li><span id="mood_li10"> </span> <i id="mood_play10" class="fas fa-play"></i></li>
+
+            </br>
+        </ul>
+        <div class="hidden" id="hidden-uris-2">
+            <span id="mood_val1"> </span>
+            <span id="mood_val2"> </span>
+            <span id="mood_val3"> </span>
+            <span id="mood_val4"> </span>
+            <span id="mood_val5"> </span>
+            <span id="mood_val6"> </span>
+            <span id="mood_val7"> </span>
+            <span id="mood_val8"> </span>
+            <span id="mood_val9"> </span>
+            <span id="mood_val10"> </span>
         </div>
     </div>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script type="module" src="/js/spotify_playback.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="/js/helper.js"></script>
-    <script>
-        let track1 = document.getElementById('trackId5').innerText.trim();
-        let track2 = document.getElementById('trackId6').innerText.trim();
-        let track3 = document.getElementById('trackId7').innerText.trim();
-        let track4 = document.getElementById('trackId8').innerText.trim();
-        let track5 = document.getElementById('trackId9').innerText.trim();
-        let seed = [track1, track2, track3, track4, track5];
-        seed = seed.join(',');
-        document.getElementById("moodSelector").addEventListener('change', function () {
-            const access_token = document.getElementById('access_token').innerText;
-            let mood = document.getElementById('moodSelector').value;
-            switch (mood) {
-                case "happy":
-                    fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}&target_valence=0.7`, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${access_token}`
-                        },
-                    }).then(resp => console.log("first: ", resp.text())).then(result => console.log(
-                        "result: ", result));
-                    break;
-                case "sad":
-                    fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed}&target_valence=0.2`, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${access_token}`
-                        },
-                    }).then(resp => console.log("first: ", resp.text())).then(result => console.log(
-                        "result: ", result));
-                    break;
-            }
-
-        })
-    </script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="module" src="/js/spotify_playback.js"></script>
 </body>
 
 </html>

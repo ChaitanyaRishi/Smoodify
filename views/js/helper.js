@@ -11,7 +11,7 @@ const mood_music_container = document.querySelector('#display_mood_results');
 mood_selected.addEventListener('change', (e) => {
     let selected_value = mood_selected.value;
     console.log(selected_value);
-    mood_music_container.innerHTML = (`<h4> Songs for <b> ${selected_value} </b> mood: </h4>`);
+    // mood_music_container.innerHTML = (`<h4> Songs for <b> ${selected_value} </b> mood: </h4>`);
     switch (selected_value) {
         case "happy": 
             func(seed, 0.7, 0.8);
@@ -32,19 +32,27 @@ mood_selected.addEventListener('change', (e) => {
             func(seed, Math.random(), Math.random());
             break;
     }
+    setTimeout(() => {
+        window.scroll({behavior: "smooth", top: 500})
+    }, 700)
+    
 })
 
 const func = async (seed, valence, energy) => {
     let songs = await getSongs(seed,valence, energy);
-    console.log(songs.data);
-    var songList = '<ul>';
+    console.log(songs);
+    let cnt = 1;
     for(let track of songs.data.tracks) {
-        songList += '<li>' + track.name + '</li>';
+        if(cnt > 10) {
+            break;
+        }
+        document.querySelector(`#mood_val${cnt}`).innerText = `${track.uri}`;
+        document.querySelector(`#mood_li${cnt}`).innerText = `${track.name}`;
+        cnt += 1;
     }
-    songList += '</ul>';
-    mood_music_container.innerHTML = songList;
+    mood_music_container.classList.remove('hidden');
+    
 }
-
 
 const getSongs = async (seed,valence,energy) => {
     try {

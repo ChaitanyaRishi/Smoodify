@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "form-data": "^3.0.0",
     "querystring": "^0.2.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "scroll-to-element": "^2.0.3"
   }
 }

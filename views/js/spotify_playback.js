@@ -83,20 +83,39 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     };
     for (let i = 1; i <= 10; i++) {
         document.getElementById(`play${i}`).addEventListener('click', () => {
-            const uri = document.getElementById(`val${i}`).innerText;
-            console.log('uriiii: ', uri);
+            const uri = document.getElementById(`rec_val${i}`).innerText;
+            // console.log('uriiii: ', uri);
             play({
                 playerInstance: player,
                 spotify_uri: uri
             })
         })
     }
-    document.getElementById('pause').addEventListener('click', () => {
+    for (let i = 1; i <= 10; i++) {
+        document.getElementById(`mood_play${i}`).addEventListener('click', () => {
+            const uri = document.getElementById(`mood_val${i}`).innerText;
+            play({
+                playerInstance: player,
+                spotify_uri: uri
+            })
+        })
+    }
+    document.getElementById('pause1').addEventListener('click', () => {
         player.pause().then(() => {
             console.log('Paused!');
         });
     })
-    document.getElementById('resume').addEventListener('click', () => {
+    document.getElementById('resume1').addEventListener('click', () => {
+        player.resume().then(() => {
+            console.log('Resumed!');
+        });
+    })
+    document.getElementById('pause2').addEventListener('click', () => {
+        player.pause().then(() => {
+            console.log('Paused!');
+        });
+    })
+    document.getElementById('resume2').addEventListener('click', () => {
         player.resume().then(() => {
             console.log('Resumed!');
         });

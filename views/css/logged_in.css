@@ -1,5 +1,6 @@
 html,body {
     background-color: #121212;
+    overflow-x: hidden;
 }
 
 
@@ -27,7 +28,7 @@ a {
     border-bottom: 1px solid  #BB86FC;
 }
 
-span {
+.spanEle {
     border-bottom: 2px solid #BB86FC;
     color:#FFFFFF;
 }
@@ -60,4 +61,9 @@ h1 {
 #selectMood {
     color: white;
     /* border-top: 2px solid #BB86FC ; */
+}
+
+#moodSelector {
+    background-color: #03DAC5;
+    height: 30px;
 }
