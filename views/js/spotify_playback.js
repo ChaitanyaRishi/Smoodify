@@ -1,5 +1,6 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
     const token = document.getElementById('access_token').innerText;
+    const trackDisplay = document.querySelector('.stylized_text');
     console.log(token);
     // const uri = document.getElementById('val1').innerText;
     let deviceId = null;
@@ -34,6 +35,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     // Playback status updates
     player.addListener('player_state_changed', state => {
+        trackDisplay.innerText = `Now Playing: ${state.track_window.current_track.name}`;
         console.log(state);
     });
 
